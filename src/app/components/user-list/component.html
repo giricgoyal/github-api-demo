@@ -1,0 +1,22 @@
+<div class="container main-full-height">
+    <div class="user-list">
+        <div>
+            <input class="form-control" placeholder="Search by username" [(ngModel)]="searchString" (ngModelChange)="searchUsers(1)" />
+        </div>
+        <div class="list d-flex flex-row" *ngFor="let user of userList; let i = index" [routerLink]="['/user-info', user.login]">
+            <div>
+                <img src="{{user.avatar_url}}" />
+            </div>
+            <div>
+                <h4>{{user.login}}</h4>
+                <span>{{user.type}}</span>
+                <p>
+                    <a href="{{user.html_url}}" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+                </p>
+            </div>
+        </div>
+        <div class="load-more">
+            <button class="btn btn-block btn-default text-center" (click)="loadMore()">Load More</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div *ngIf="userInfo" class="container main-full-height">
+    <div class="user-info">
+        <div class="text-center">
+            <img class="avatar" src="{{userInfo.avatar_url}}" />
+            <h4>{{userInfo.name}} ({{userInfo.login}})</h4>
+            <div>{{userInfo.company}}, {{userInfo.location}}</div>
+            <div>{{userInfo.email}}</div>
+            <p>Followers: {{userInfo.followers}}, Following: {{userInfo.following}}</p>
+            <p><a href="{{userInfo.html_url}}" target="_blank">Github Profile</a></p>
+            <p>
+                About:<br> {{userInfo.bio}}
+            </p>
+        </div>
+        <div>
+            <ngb-tabset type="pills">
+                <ngb-tab title="Repositories ({{userInfo.public_repos}})">
+                    <ng-template ngbTabContent>
+                        <div *ngFor="let repo of repoList; let i = index">
+                            <div class="list">
+                                <a href="{{repo.html_url}}" target="_blank">{{repo.full_name}}</a>
+                                <p>{{repo.description}}</p>
+                            </div>
+                        </div>
+                        <button *ngIf="repoList.length < userInfo.public_repos" class="btn btn-block btn-default text-center" (click)="loadMoreRepos()">Load More</button>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Gists ({{userInfo.public_gists}})">
+                    <ng-template ngbTabContent>
+                        <div *ngFor="let gist of gistList; let i = index">
+                            <div class="list">
+                                <a href="{{gist.html_url}}" target="_blank">{{gist.id}}</a>
+                                <p>{{gist.description}}</p>
+                            </div>
+                        </div>
+                        <button *ngIf="gistList.length < userInfo.public_gists" class="btn btn-block btn-default text-center" (click)="loadMoreGists()">Load More</button>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</div>

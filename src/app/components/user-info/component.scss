@@ -1,0 +1,19 @@
+.user-info {
+    margin: auto;
+    background-color: white;
+    max-width: 600px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    .avatar {
+        width: 200px;
+        border-radius: 50%;
+        border: 1px solid #e0e0e0;
+        margin-bottom: 20px;
+    }
+}
+
+.list {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px;
+}
